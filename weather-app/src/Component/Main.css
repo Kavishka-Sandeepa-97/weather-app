@@ -1,15 +1,37 @@
 input{
-    width: 500px !important;
+    width: 400px !important;
     height: 30px;
 }
-div{
-    display: flex;
-    justify-content: center;
-}
+
 
 .dec{
         width: 1000px !important;
         height: 600px;
         background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
 
+}
+
+.btnCustom{
+    height: 35px !important;
+}
+.btn-x{
+    margin-top: 44px ;
+   
+}
+img{
+    width:200px;
+    height:200px;
+}
+
+.center{
+    position: relative;
+    margin-top: 50px;
+    margin-left: 400px;
+}
+.wind-icon{
+   font-size: 50px;
+    
+}
+.humidity-icon{
+    font-size: 50px; 
 }
