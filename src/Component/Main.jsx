@@ -1,9 +1,16 @@
 import './Main.css'
-import weather from '../assets/01.png'
+import normalWeatherIcon from '../assets/normal_icon.jpg'
+import rainIcon from '../assets/rain_icon.png'
+import snowIcon from '../assets/snow_icon.png'
+import clearSun from '../assets/clear_sun_icon.png'
+import fewCloud from '../assets/Cloudy_Icon.png'
+import { useState } from 'react';
 export default function Min() {
 
     const apiKey="fc377b6c97c3bdc3e927040de7d9eeb9";
     const cityName=null;
+
+    const[icon,changeIcon]=useState(normalWeatherIcon);
 
     async function  searchCity(){
 
@@ -15,15 +22,27 @@ export default function Min() {
        let response= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputEle[0].value}&units=metric&appid=${apiKey}`);
        let data =await response.json();
 
+       if(data.weather[0].icon==="09n"||data.weather[0].icon==="09d"||data.weather[0].icon==="10n"||data.weather[0].icon==="10d"||data.weather[0].icon==="11n"||data.weather[0].icon==="11d"){
+            changeIcon(rainIcon);
+       }else if(data.weather[0].icon==="13n"||data.weather[0].icon==="13d"){
+            changeIcon(snowIcon);
+       }else if(data.weather[0].icon==="01n"||data.weather[0].icon==="01n"){
+            changeIcon(clearSun);
+       }else if(data.weather[0].icon==="02n"||data.weather[0].icon==="02n"){
+        changeIcon(fewCloud);
+     }else{
+            changeIcon(normalWeatherIcon);
+       }
+
        const temp=document.getElementsByClassName("tepm");
        const city=document.getElementsByClassName("city");
        const humidiy=document.getElementsByClassName("humidity-precent");
        const wind=document.getElementsByClassName("wind-speed");
         
-        temp[0].innerHTML=data.main.temp;
+        temp[0].innerHTML=data.main.temp+"°C";
         city[0].innerHTML=data.name;
-        humidiy[0].innerHTML=data.main.humidity;
-        wind[0].innerHTML=data.wind.speed;
+        humidiy[0].innerHTML=data.main.humidity+"%";
+        wind[0].innerHTML=data.wind.speed+" Km/h";
 
 
     }
@@ -43,7 +62,7 @@ export default function Min() {
 
             <div className='center'>
 
-                <img src={weather} />
+                <img src={icon} />
                 <h1 className='tepm'>24°C</h1>
                 <h3 className='city'>London</h3>
 
