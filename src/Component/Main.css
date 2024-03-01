@@ -1,12 +1,14 @@
 input{
-    width: 400px !important;
+    width: 300px !important;
     height: 30px;
 }
-
+.main-container{
+    border-radius: 20px;
+}
 
 .dec{
         width: 1000px !important;
-        height: 600px;
+        height: 620px;
         background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
 
 }
@@ -21,6 +23,8 @@ input{
 img{
     width:200px;
     height:200px;
+    border-radius: 20px;
+    
 }
 
 .center{
@@ -34,4 +38,28 @@ img{
 }
 .humidity-icon{
     font-size: 50px; 
+}
+
+.txt{
+    display: flex;
+    justify-content: end;
+    
+}
+
+.temp-div, .city-div {
+    margin-left: 50px;
+ }
+
+
+.humidity{
+    position: relative;
+    left: 250px;
+}
+.wind{
+    position: relative;
+left: 150px;
+
+}
+.wind-speed{
+    box-sizing: border-box;
 }
